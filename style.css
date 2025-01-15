@@ -58,11 +58,11 @@ body {
     width: 100%;
 }
 
-.column {
-    box-sizing: border-box;
+.col {
     width: 120px;
     height: 120px;
-    border: 2px solid black;
+    box-sizing: border-box;
+    border: 1px solid black;
 }
 
 button {
