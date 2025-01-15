@@ -1,6 +1,6 @@
 const slider = document.querySelector("#myRange");
 const output = document.querySelector("#demo");
-
+const clear = document.querySelector(".reset")
 output.innerHTML = `${slider.value } X ${slider.value}`;
 
 
@@ -12,4 +12,9 @@ slider.addEventListener("input", (e) => {
     output.innerHTML = `${slider.value } X ${slider.value}`;
 });
 
+clear.addEventListener("click", (e) => {
+    slider.value = 4;
+    console.log(e);
+    output.innerHTML = `${slider.value } X ${slider.value}`;
+})
 
