@@ -10,7 +10,7 @@ let isMouseDown = false; // To track dragging state
 container.addEventListener("mousedown", (e) => {
     isMouseDown = true;
     if (e.target.classList.contains("col")) {
-        e.target.style.backgroundColor = "red"; // Change color for the clicked cell
+        e.target.style.backgroundColor = getRandomColor(); // Change color for the clicked cell
     }
 });
 
@@ -22,13 +22,20 @@ container.addEventListener("mouseup", () => {
 // Change color as the mouse moves over cells
 container.addEventListener("mousemove", (e) => {
     if (isMouseDown && e.target.classList.contains("col")) {
-        e.target.style.backgroundColor = "red"; // Change color while dragging
+        e.target.style.backgroundColor = getRandomColor(); // Change color while dragging
     }
 });
 
-// slider.oninput = function() {
-//     output.innerHTML = `${slider.value } X ${slider.value}`;
-// }
+function getRandomColor() {
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
+
 
 slider.addEventListener("input", (e) => {
     output.innerHTML = `${slider.value } X ${slider.value}`;
