@@ -4,6 +4,27 @@ const clear = document.querySelector(".reset");
 const container = document.querySelector(".container");
 output.innerHTML = `${slider.value } X ${slider.value}`;
 
+let isMouseDown = false; // To track dragging state
+
+// Track when the mouse is pressed
+container.addEventListener("mousedown", (e) => {
+    isMouseDown = true;
+    if (e.target.classList.contains("col")) {
+        e.target.style.backgroundColor = "red"; // Change color for the clicked cell
+    }
+});
+
+// Track when the mouse is released
+container.addEventListener("mouseup", () => {
+    isMouseDown = false;
+});
+
+// Change color as the mouse moves over cells
+container.addEventListener("mousemove", (e) => {
+    if (isMouseDown && e.target.classList.contains("col")) {
+        e.target.style.backgroundColor = "red"; // Change color while dragging
+    }
+});
 
 // slider.oninput = function() {
 //     output.innerHTML = `${slider.value } X ${slider.value}`;
@@ -30,10 +51,12 @@ function createGrid (gridDimension) {
     for (let i = 0; i < gridDimension; i++) { // Outer loop for rows
         const rowDiv = document.createElement("div");
         rowDiv.classList.add("row");
+        
     
         for (let j = 0; j < gridDimension; j++) { // Inner loop for columns
             const colDiv = document.createElement("div");
             colDiv.classList.add("col");
+            
             colDiv.style.width = `${width}px`;
             colDiv.style.height = `${height}px`;
             rowDiv.appendChild(colDiv);
@@ -41,8 +64,7 @@ function createGrid (gridDimension) {
 
         container.appendChild(rowDiv);
     }
-
-
+    
 
 }
 
